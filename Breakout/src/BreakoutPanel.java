@@ -51,7 +51,9 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	}
 	
 	private void paintBricks(Graphics g) {
-		// TODO: Loop through the bricks and call the paint() method
+		for (int i=0;i<bricks.length;i++) {
+			bricks[i].paint(g);// TODO: Loop through the bricks and call the paint() method
+		}
 	}
 	
 	private void update() {
@@ -165,12 +167,19 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO: Set the velocity of the paddle depending on whether the player is pressing left or right
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			paddle.setXVelocity(-1);// TODO: Set the velocity of the paddle depending on whether the player is pressing left or right
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			paddle.setXVelocity(1);
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO: Set the velocity of the paddle after the player has released the keys
+		if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			paddle.setXVelocity(0);// TODO: Set the velocity of the paddle after the player has released the keys
+		}
 	}
 
 	@Override

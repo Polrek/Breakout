@@ -12,7 +12,7 @@ public class Paddle extends Sprite {
 	
 	public void resetPosition() {
 		setX(Settings.INITIAL_PADDLE_X); // Set initial position x  (use INITIAL_PADDLE_X)
-		setY(Settings.INITIAL_PADDLE_Y); // Set initial position  y (use INITIAL_PADDLE_Y)
+		setY(Settings.INITIAL_PADDLE_Y); // Set initial position y (use INITIAL_PADDLE_Y)
 	}
 	
 	public void update() {
