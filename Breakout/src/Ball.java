@@ -34,7 +34,7 @@ public class Ball extends Sprite {
 		if(x >= Settings.WINDOW_WIDTH - Settings.BALL_WIDTH) {
 			x = Settings.WINDOW_WIDTH - Settings.BALL_WIDTH; // TODO: CHECK THIS: Set x to the right edge of the screen (see the above if condition)
 			setXVelocity(-getXVelocity()); // TODO: CHECK THIS: Change the x velocity to make the ball go left 
-			//reverses the velocity of the ball "bounce"
+			//reverses the velocity of the ball - a "bounce"
 		}
 		
 		// Bounce off top of screen
