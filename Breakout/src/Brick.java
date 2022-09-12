@@ -12,7 +12,7 @@ public class Brick extends Sprite {
 	}
 
 	public boolean isBroken() {
-		return false;	// TODO: Return the correct variable
+		return false;	// TODO: Check this: Return the correct variable
 	}
 	public void setBroken(boolean b) {
 		broken = true;// TODO: Check this: Set the broken variable using the parameter given
