@@ -156,7 +156,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
         // Draw lives left
         // Draw lives left in the top left hand corner
         g.setFont(new Font("Arial", Font.BOLD, 15));
-        if (livesLeft > 1) {
+        if (livesLeft > 1 || livesLeft == 0) {
         	g.drawString(livesLeft+" lives remaining", (Settings.LIVES_POSITION_X), (Settings.LIVES_POSITION_Y));
         }
         else {
