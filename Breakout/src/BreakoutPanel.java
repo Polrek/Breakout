@@ -29,9 +29,9 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		Timer timer = new Timer(5, this);
 		timer.start();
 		
-		ball = new Ball();// TODO: CHECK THIS: Create a new ball object and assign it to the appropriate variable
-		paddle = new Paddle();// TODO: CHECK THIS: Create a new paddle object and assign it to the appropriate variable
-		bricks = new Brick[Settings.TOTAL_BRICKS];// TODO: CHECK THIS: Create a new bricks array (Use Settings.TOTAL_BRICKS)
+		ball = new Ball();//  Create a new ball object and assign it to the appropriate variable
+		paddle = new Paddle();// Create a new paddle object and assign it to the appropriate variable
+		bricks = new Brick[Settings.TOTAL_BRICKS];//  Create a new bricks array (Use Settings.TOTAL_BRICKS)
 		createBricks();// Call the createBricks() method
 	}
 	
@@ -52,26 +52,26 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	
 	private void paintBricks(Graphics g) {
 		for (int i=0;i<bricks.length;i++) {
-			bricks[i].paint(g);// TODO: Loop through the bricks and call the paint() method
+			bricks[i].paint(g);// Loop through the bricks and call the paint() method
 		}
 	}
 	
 	private void update() {
 		if(gameRunning) {
-			ball.update(); // TODO: Update the ball
-			paddle.update();// TODO: Update the paddle
+			ball.update(); // Update the ball
+			paddle.update();// Update the paddle
 			collisions();
 			repaint();
 		}
 	}
 	
 	private void gameOver() {
-		screenMessage = "Game over!";// TODO: Set screen message
+		screenMessage = "Game over!"; //Set screen message for loss condition
 		stopGame();
 	}
 	
 	private void gameWon() {
-		screenMessage = "You won!";// TODO: Set screen message
+		screenMessage = "You won!"; //Set screen message for win condition
 		stopGame();
 	}
 	
@@ -154,8 +154,14 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
         paintBricks(g);
         
         // Draw lives left
-        // TODO: Draw lives left in the top left hand corner
-        // LIVES_POSITION_X/Y
+        // Draw lives left in the top left hand corner
+        g.setFont(new Font("Arial", Font.BOLD, 15));
+        if (livesLeft > 1) {
+        	g.drawString(livesLeft+" lives remaining", (Settings.LIVES_POSITION_X), (Settings.LIVES_POSITION_Y));
+        }
+        else {
+        	g.drawString(livesLeft+" life remaining", (Settings.LIVES_POSITION_X), (Settings.LIVES_POSITION_Y));
+        }
         
         // Draw screen message
         if(screenMessage != null) {
@@ -168,7 +174,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			paddle.setXVelocity(-1);// TODO: Set the velocity of the paddle depending on whether the player is pressing left or right
+			paddle.setXVelocity(-1);//  Set the velocity of the paddle depending on whether the player is pressing left or right
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			paddle.setXVelocity(1);
@@ -178,7 +184,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			paddle.setXVelocity(0);// TODO: Set the velocity of the paddle after the player has released the keys
+			paddle.setXVelocity(0);//  Set the velocity of the paddle after the player has released the keys
 		}
 	}
 

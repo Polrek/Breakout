@@ -5,9 +5,9 @@ public class Paddle extends Sprite {
 	private int xVelocity;
 	
 	public Paddle() {
-		setWidth(Settings.PADDLE_WIDTH); // TODO: Set width to Settings.PADDLE_WIDTH
-		setHeight(Settings.PADDLE_HEIGHT); // TODO: Set width to Settings.PADDLE_HEIGHT
-		resetPosition(); // TODO: Call resetPosition
+		setWidth(Settings.PADDLE_WIDTH); // Set width to Settings.PADDLE_WIDTH
+		setHeight(Settings.PADDLE_HEIGHT); // Set width to Settings.PADDLE_HEIGHT
+		resetPosition(); // Call resetPosition
 	}
 	
 	public void resetPosition() {
@@ -17,14 +17,14 @@ public class Paddle extends Sprite {
 	
 	public void update() {
 		x += xVelocity;
-		// TODO: Check: Prevent the paddle from moving outside (left) of the screen
+		// Prevent the paddle from moving outside (left) of the screen
 		if(x <= 0) {
-			x = 0;// TODO: CHECK THIS: Set x to 0 so it does not leave the screen
+			x = 0; // CHECK THIS: Set x to 0 so it does not leave the screen
 		}
-		// TODO: Check: Prevent the paddle from moving outside (right) of the screen
+		// Prevent the paddle from moving outside (right) of the screen
 		
 		if(x >= Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH-15) {
-			x = Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH-15; // TODO: CHECK THIS: Set x to the right edge of the screen (see the above if condition)
+			x = Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH-15; // Set x to the right edge of the screen (see the above if condition)
 		} //-15 to work around eclipse bug
 	}
 	
@@ -33,6 +33,6 @@ public class Paddle extends Sprite {
 	}
 	
 	public void setXVelocity(int vel) {
-		this.xVelocity = vel;// TODO: Check: Set x velocity
+		this.xVelocity = vel;//  Set x velocity
 	}
 }

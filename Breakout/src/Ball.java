@@ -26,31 +26,31 @@ public class Ball extends Sprite {
 		
 		// Bounce off left side of screen
 		if(x <= 0) {
-			x = 0;// TODO: CHECK THIS: Set x to 0 so it does not leave the screen
-			setXVelocity(1); // TODO: CHECK THIS: Change the x velocity to make the ball go right
+			x = 0;//  Set x to 0 so it does not leave the screen
+			setXVelocity(1); // Change the x velocity to make the ball go right
 		}
 		
 		// Bounce off right side of screen
 		if(x >= Settings.WINDOW_WIDTH - Settings.BALL_WIDTH-15) {
-			x = Settings.WINDOW_WIDTH - Settings.BALL_WIDTH-15; // TODO: CHECK THIS: Set x to the right edge of the screen (see the above if condition)
-			setXVelocity(-1); // TODO: CHECK THIS: Change the x velocity to make the ball go left 
+			x = Settings.WINDOW_WIDTH - Settings.BALL_WIDTH-15; //  Set x to the right edge of the screen (see the above if condition)
+			setXVelocity(-1); // Change the x velocity to make the ball go left 
 			//reverses the velocity of the ball - a "bounce"
 			//-15 to workaround eclipse bug
 		}
 		
 		// Bounce off top of screen
 		if(y <= 0) {
-			y = 0;// TODO: Set y to 0 so it does not leave the screen
-			setYVelocity(1);// TODO: CHECK THIS: Change the y velocity to make the ball go downward
+			y = 0;// Set y to 0 so it does not leave the screen
+			setYVelocity(1);// Change the y velocity to make the ball go downward
 		}
 		
 	}
 	
 	public void setXVelocity(int x) {
-		xVelocity = x;// TODO: CHECK THIS: Set the x velocity
+		xVelocity = x;//  Set the x velocity
 	}
 	public void setYVelocity(int y) {
-		yVelocity = y;// TODO: CHECK THIS: Set the y velocity
+		yVelocity = y;//  Set the y velocity
 	}
 	
 	public int getXVelocity() {

@@ -6,29 +6,29 @@ public class Sprite {
 	
 	// Note: This should only set a single value, they can be done in a single statement
 	public void setX(int x) {
-		this.x = x; // TODO Check
+		this.x = x; 
 	}
 	public void setY(int y) { 
-		this.y = y;// TODO Check
+		this.y = y;
 	}
 	public void setWidth(int width) { 
-		this.width = width; // TODO Check
+		this.width = width; 
 	}
 	public void setHeight(int height) { 
-		this.height = height; // TODO Check
+		this.height = height; 
 	}
 	
 	public int getX() { 
-		return x;	// TODO: Check: Return correct value
+		return x;	// Return correct value
 	}
 	public int getY() { 
-		return y;	// TODO: Check: Return correct value
+		return y;	//Return correct value
 	}
 	public int getWidth() { 
-		return width;	// TODO: Check: Return correct value
+		return width;	// Return correct value
 	}
 	public int getHeight() { 
-		return height;	// TODO: Return correct value
+		return height;	//Return correct value
 	}
 	
 	Rectangle getRectangle() {
