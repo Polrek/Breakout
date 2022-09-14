@@ -31,10 +31,11 @@ public class Ball extends Sprite {
 		}
 		
 		// Bounce off right side of screen
-		if(x >= Settings.WINDOW_WIDTH - Settings.BALL_WIDTH) {
-			x = Settings.WINDOW_WIDTH - Settings.BALL_WIDTH; // TODO: CHECK THIS: Set x to the right edge of the screen (see the above if condition)
+		if(x >= Settings.WINDOW_WIDTH - Settings.BALL_WIDTH-15) {
+			x = Settings.WINDOW_WIDTH - Settings.BALL_WIDTH-15; // TODO: CHECK THIS: Set x to the right edge of the screen (see the above if condition)
 			setXVelocity(-1); // TODO: CHECK THIS: Change the x velocity to make the ball go left 
 			//reverses the velocity of the ball - a "bounce"
+			//-15 to workaround eclipse bug
 		}
 		
 		// Bounce off top of screen

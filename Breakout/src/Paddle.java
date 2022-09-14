@@ -23,9 +23,9 @@ public class Paddle extends Sprite {
 		}
 		// TODO: Check: Prevent the paddle from moving outside (right) of the screen
 		
-		if(x >= Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH) {
-			x = Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH; // TODO: CHECK THIS: Set x to the right edge of the screen (see the above if condition)
-		}
+		if(x >= Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH-15) {
+			x = Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH-15; // TODO: CHECK THIS: Set x to the right edge of the screen (see the above if condition)
+		} //-15 to work around eclipse bug
 	}
 	
 	public void paint(Graphics g) {
