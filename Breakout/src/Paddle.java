@@ -17,22 +17,22 @@ public class Paddle extends Sprite {
 	
 	public void update() {
 		x += xVelocity;
-		// Prevent the paddle from moving outside (left) of the screen
-		if(x <= 0) {
-			x = 0; // CHECK THIS: Set x to 0 so it does not leave the screen
+		
+		if(x <= 0) { // Prevent the paddle from moving outside (left) of the screen
+			x = 0; // Set x to 0 so it does not leave the screen
 		}
 		// Prevent the paddle from moving outside (right) of the screen
 		
-		if(x >= Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH-15) {
+		if(x >= Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH-15) { //-15 because this is a minimum viable product and it's good enough
 			x = Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH-15; // Set x to the right edge of the screen (see the above if condition)
-		} //-15 to work around eclipse bug
+		} //note for future dev: You probably need to pass the JPanel's width and height into the paddle update() method to make this better
 	}
 	
-	public void paint(Graphics g) {
+	public void paint(Graphics g) { //paints the paddle on the screen
 		g.fillRect(x, y, Settings.PADDLE_WIDTH, Settings.PADDLE_HEIGHT);
 	}
 	
 	public void setXVelocity(int vel) {
-		this.xVelocity = vel;//  Set x velocity
+		this.xVelocity = vel;//  Sets the x velocity
 	}
 }

@@ -35,7 +35,7 @@ public class Ball extends Sprite {
 			x = Settings.WINDOW_WIDTH - Settings.BALL_WIDTH-15; //  Set x to the right edge of the screen (see the above if condition)
 			setXVelocity(-1); // Change the x velocity to make the ball go left 
 			//reverses the velocity of the ball - a "bounce"
-			//-15 to workaround eclipse bug
+			////note for future dev: You probably need to pass the JPanel's width and height into the ball update() method to make this better
 		}
 		
 		// Bounce off top of screen

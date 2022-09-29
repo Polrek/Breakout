@@ -22,11 +22,11 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	
 	public BreakoutPanel(Breakout game) {
 		
-		addKeyListener(this);
-		setFocusable(true);
+		addKeyListener(this); //makes the key press instructions below work
+		setFocusable(true); //the window is set to focusable
 		
 		Timer timer = new Timer(5, this);
-		timer.start();
+		timer.start(); //starts the timer which means it can start sending key press events to the listener
 		
 		ball = new Ball();//  Create a new ball object and assign it to the appropriate variable
 		paddle = new Paddle();// Create a new paddle object and assign it to the appropriate variable
@@ -38,8 +38,8 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		int counter = 0;
 		int x_space = 0;
 		int y_space = 0;
-		for(int x = 0; x < 4; x++) {
-			for(int y = 0; y < 5; y++) {
+		for(int x = 0; x < 4; x++) { //loops through to create 4 columns of bricks
+			for(int y = 0; y < 5; y++) { //loops through to create 5 rows of bricks
 				bricks[counter] = new Brick((x * Settings.BRICK_WIDTH) + Settings.BRICK_HORI_PADDING + x_space, (y * Settings.BRICK_HEIGHT) + Settings.BRICK_VERT_PADDING + y_space);
 				counter++;
 				y_space++;
@@ -51,7 +51,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	
 	private void paintBricks(Graphics g) {
 		for (int i=0;i<bricks.length;i++) {
-			bricks[i].paint(g);// Loop through the bricks and call the paint() method
+			bricks[i].paint(g);// Loop through the bricks and call the paint() method. This draws the bricks on the screen
 		}
 	}
 	
@@ -79,21 +79,20 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	}
 	
 	private void collisions() {
-		// Check for loss
+		// Check for loss (ball goes all the way to the bottom, below the paddle and collides with the bottom)
 		if(ball.y > 450) {
-			// Game over
 			livesLeft--;
-			if(livesLeft <= 0) {
+			if(livesLeft <= 0) { // Game over if no lives left
 				gameOver();
 				return;
 			} else {
-				ball.resetPosition();
-				ball.setYVelocity(-1);
+				ball.resetPosition(); // still have lives left. reset the ball to the reset position
+				ball.setYVelocity(-1); // make the ball go the opposite way to what it was doing (it was going down, so send it back up)
 			}
 		}
 		
 		// Check for win
-		boolean bricksLeft = false;
+		boolean bricksLeft = false; 
 		for(int i = 0; i < bricks.length; i++) {
 			// Check if there are any bricks left
 			if(!bricks[i].isBroken()) {
@@ -102,8 +101,8 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 				break;
 			}
 		}
-		if(!bricksLeft) {
-			gameWon();
+		if(!bricksLeft) { //if all the bricks are gone
+			gameWon(); //call gameWon (you won!)
 			return;
 		}
 		
@@ -113,7 +112,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 			// Proper game would change angle of ball depending on where it hit the paddle
 			ball.setYVelocity(-1);
 		}
-		
+		//checks for the ball intersecting a brick
 		for(int i = 0; i < bricks.length; i++) {
 			if (ball.getRectangle().intersects(bricks[i].getRectangle())) {
 				int ballLeft = (int) ball.getRectangle().getMinX();
@@ -125,20 +124,23 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	            Point pointLeft = new Point(ballLeft - 1, ballTop);
 	            Point pointTop = new Point(ballLeft, ballTop - 1);
 	            Point pointBottom = new Point(ballLeft, ballTop + ballHeight + 1);
-
-	            if (!bricks[i].isBroken()) {
+	             	
+	            //if the ball intersects the right side of the brick, make the ball bounce left. 
+	            //if the ball intersects the left side of the brick, make the ball bounce right
+	            if (!bricks[i].isBroken()) { 
 	                if (bricks[i].getRectangle().contains(pointRight)) {
 	                    ball.setXVelocity(-1);
 	                } else if (bricks[i].getRectangle().contains(pointLeft)) {
 	                    ball.setXVelocity(1);
 	                }
-
+	           //if the ball intersects the top of a brick, make it bounce up
+	           //if the ball intersects the bottom of a brick, make it bounce down
 	                if (bricks[i].getRectangle().contains(pointTop)) {
 	                    ball.setYVelocity(1);
 	                } else if (bricks[i].getRectangle().contains(pointBottom)) {
 	                    ball.setYVelocity(-1);
 	                }
-	                bricks[i].setBroken(true);
+	                bricks[i].setBroken(true); //set broken to true for the particular brick that was intersected.
 	            }
 			}
 		}
@@ -171,30 +173,30 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
     }
 
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e) { //set the action when left button on kb is pressed
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			paddle.setXVelocity(-1);//  Set the velocity of the paddle depending on whether the player is pressing left or right
 		}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) { //set the action when right button on kb is pressed
 			paddle.setXVelocity(1);
 		}
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
+	public void keyReleased(KeyEvent e) { //sets the action performed when the left or right button is released
 		if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			paddle.setXVelocity(0);//  Set the velocity of the paddle after the player has released the keys
 		}
 	}
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
+	public void keyTyped(KeyEvent arg0) { //not used
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		update();
+		update(); //calls the update method for the paddle when the key action is performed
 	}
 
 }
